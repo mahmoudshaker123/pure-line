@@ -69,8 +69,23 @@ a {
 
 .navbar-brand {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
   line-height: 1.05;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-logo {
+  width: 58px;
+  height: 58px;
+  object-fit: cover;
+  border-radius: 1rem;
+  border: 1px solid rgba(16, 16, 16, 0.08);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
 }
 
 .brand-ar {
@@ -438,6 +453,65 @@ a {
   box-shadow: var(--shadow);
 }
 
+.project-gallery-item,
+.client-card,
+.map-card {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--line);
+  border-radius: 1.6rem;
+  box-shadow: var(--shadow);
+}
+
+.project-gallery-item {
+  overflow: hidden;
+  height: 100%;
+}
+
+.project-image-small {
+  height: 300px;
+}
+
+.client-card {
+  padding: 1.6rem;
+  height: 100%;
+}
+
+.client-card h3 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin: 0 0 0.8rem;
+}
+
+.client-card p {
+  color: var(--muted);
+  margin-bottom: 0;
+}
+
+.map-card {
+  padding: 1.4rem;
+}
+
+.map-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.map-card h3 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  margin: 0.45rem 0 0;
+}
+
+.map-card iframe {
+  width: 100%;
+  height: 380px;
+  border: 0;
+  border-radius: 1.2rem;
+}
+
 .project-image-wrap {
   position: relative;
   overflow: hidden;
@@ -543,6 +617,15 @@ a {
   margin-bottom: 1.5rem;
 }
 
+.footer-logo {
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  margin-bottom: 1rem;
+}
+
 .footer-brand h3 {
   font-size: 1.4rem;
   font-weight: 800;
@@ -597,6 +680,11 @@ a {
     flex-direction: column;
     align-items: flex-start;
   }
+
+  .map-card-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 @media (max-width: 767.98px) {
@@ -623,6 +711,15 @@ a {
 
   .project-image {
     height: 320px;
+  }
+
+  .project-image-small {
+    height: 260px;
+  }
+
+  .brand-logo {
+    width: 50px;
+    height: 50px;
   }
 
   .footer-bottom {
