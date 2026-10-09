@@ -1,0 +1,15 @@
+.git
+.venv
+__pycache__
+*.py[cod]
+.env*
+!.env.example
+!.env.production.example
+db.sqlite3
+media
+staticfiles
+backups
+static/images/services/*.png
+static/images/brand/logo-v2.png
+server*.log
+server*.err.log

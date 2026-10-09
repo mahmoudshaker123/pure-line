@@ -1,14 +1,32 @@
-# Pure Line Website
+# موقع مؤسسة الخط النقي
 
-Static website for Pure Line for Contracting and Elevators Est.
+موقع عربي متجاوب مبني بـ Django لمؤسسة الخط النقي للمقاولات والمصاعد، ويشمل:
 
-## Deploy on GitHub Pages
+- واجهة حديثة لخدمات المصاعد والمقاولات والسباكة والكهرباء والحريق والإنذار والتكييف.
+- إدارة الخدمات والمشروعات وآراء العملاء وبيانات التواصل من لوحة الإدارة.
+- لوحة إدارة حديثة مبنية على django-unfold مع بحث سريع، إحصائيات، إجراءات مختصرة ووضع داكن.
+- تعديل الشعار وصورة الواجهة والهواتف والبريد وواتساب والعنوان وساعات العمل وروابط التواصل وبيانات SEO دون تعديل الكود.
+- إدارة قيم الشركة وخطوات التنفيذ والأرقام الإحصائية الظاهرة في الصفحة الرئيسية.
+- حفظ طلبات العملاء في قاعدة البيانات مع حالات للمتابعة.
+- صور محسنة للويب وتصميم متجاوب للهاتف والكمبيوتر.
 
-1. Create a new GitHub repository.
-2. Push this project to the `main` branch.
-3. In GitHub, open `Settings` > `Pages`.
-4. Under `Build and deployment`, choose `Deploy from a branch`.
-5. Select the `main` branch and `/ (root)`.
-6. Save and wait for the site URL to be generated.
+## التشغيل المحلي
 
-Main entry point: `index.html`
+```powershell
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe manage.py migrate
+.\.venv\Scripts\python.exe manage.py seed_site
+.\.venv\Scripts\python.exe manage.py createsuperuser
+.\.venv\Scripts\python.exe manage.py runserver
+```
+
+الموقع: `http://127.0.0.1:8000/`
+
+لوحة الإدارة: `http://127.0.0.1:8000/admin/`
+
+قبل النشر الفعلي، عرّف متغيرات البيئة الموجودة في `.env.example`، واستخدم قاعدة بيانات ونظام تقديم ملفات static مناسبين لبيئة الإنتاج.
+
+## النشر على Production
+
+المشروع مجهز للنشر باستخدام Docker وPostgreSQL وGunicorn وCaddy مع HTTPS تلقائي. راجع [دليل النشر الكامل](DEPLOYMENT.md).
