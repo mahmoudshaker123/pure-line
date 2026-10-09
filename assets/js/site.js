@@ -53,3 +53,27 @@ const counterObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.7 });
 
 document.querySelectorAll('[data-count]').forEach((element) => counterObserver.observe(element));
+
+const contactForm = document.querySelector('#contact-form');
+contactForm?.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const value = (id) => document.getElementById(id)?.value.trim() || '';
+  const name = value('id_name');
+  const phone = value('id_phone');
+  const email = value('id_email');
+  const location = value('id_location');
+  const service = value('id_service');
+  const message = value('id_message');
+
+  if (!name || !phone || !message) {
+    window.alert('من فضلك اكتب الاسم ورقم الجوال وتفاصيل المشروع.');
+    return;
+  }
+
+  const text = encodeURIComponent(
+    `طلب جديد من الموقع\nالاسم: ${name}\nالجوال: ${phone}\nالبريد: ${email || '-'}\n` +
+    `الخدمة: ${service || '-'}\nالموقع: ${location || '-'}\nالتفاصيل: ${message}`
+  );
+  window.open(`https://wa.me/966534201283?text=${text}`, '_blank', 'noopener');
+  contactForm.reset();
+});

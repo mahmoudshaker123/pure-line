@@ -1,131 +1,39 @@
-# نشر موقع الخط النقي على Production
+# نشر النسخة Static على Cloudflare Pages
 
-التجهيز الحالي يستخدم Docker Compose ويشغّل أربعة أجزاء مترابطة: Django عبر Gunicorn، قاعدة PostgreSQL، وخادم Caddy الذي يفعّل HTTPS ويضغط الاستجابات تلقائيًا. الصور المرفوعة من لوحة الإدارة وقاعدة البيانات محفوظتان في Docker volumes دائمة.
+النسخة الحالية أصبحت Static بالكامل: لا تحتاج Django أو PostgreSQL أو Docker أو VPS. تحتاج فقط إلى الدومين، وCloudflare Pages المجاني لاستضافة ملفات HTML/CSS/JS والصور.
 
-## المشتريات المطلوبة
+## الملفات المهمة
 
-1. دومين واحد، ويفضل اسم `.com` قصيرًا وواضحًا. استخدم `.sa` فقط إذا كان مهمًا للهوية المحلية ومستندات التسجيل متاحة.
-2. VPS بنظام Ubuntu LTS، بمواصفات 2 vCPU وذاكرة 4GB وقرص SSD لا يقل عن 40GB. هذه المواصفات كافية جدًا للموقع في بدايته.
-3. تفعيل النسخ الاحتياطي التلقائي لدى شركة السيرفر إن كان سعره مناسبًا.
-4. حساب Cloudflare مجاني لإدارة DNS والحماية وCDN؛ لا تحتاج شراء SSL أو CDN مدفوع.
-5. اختياري: بريد باسم الدومين وخدمة SMTP لإرسال إشعار عند وصول طلب عميل. الموقع سيحفظ الطلبات في لوحة الإدارة حتى دون SMTP.
+- `index.html`: الصفحة الرئيسية الجاهزة.
+- `assets/`: CSS وJavaScript والصور المضغوطة.
+- `404.html`: صفحة الخطأ.
+- `_headers`: كاش وحماية للملفات.
 
-لا تحتاج حاليًا إلى قاعدة بيانات Managed مدفوعة، أو لوحة cPanel، أو استضافة صور مستقلة.
+نموذج التواصل لا يحتاج قاعدة بيانات؛ عند الإرسال يفتح واتساب برسالة جاهزة على رقم الشركة. عدّل الرقم داخل `assets/js/site.js` إذا تغير رقم الواتساب.
 
-## 1. تجهيز السيرفر
+## النشر
 
-- أنشئ VPS بـ Ubuntu LTS وسجّل الدخول بمفتاح SSH، وليس بكلمة مرور فقط.
-- حدّث النظام وثبّت Docker Engine وDocker Compose plugin من تعليمات Docker الرسمية.
-- فعّل جدار الحماية وافتح المنافذ `22`, `80`, `443` فقط.
-- أنشئ مستخدمًا عاديًا بصلاحية sudo لتشغيل المشروع، ولا تستخدم root في العمل اليومي.
+1. اشترِ الدومين، ثم أضفه إلى حساب Cloudflare.
+2. في Cloudflare Dashboard افتح **Workers & Pages → Create application → Pages → Import existing Git repository**.
+3. اختر مستودع `pure-line` وفرع `main`.
+4. اجعل Build command فارغًا أو `exit 0`، وBuild output directory هو `/` أو اتركه الافتراضي إذا كان الجذر هو المشروع.
+5. بعد النشر أضف `purelineksa.com` و`www.purelineksa.com` من Custom domains. Cloudflare ينشئ HTTPS تلقائيًا.
 
-مثال لمجلد المشروع:
+## تحديث الموقع
 
-```bash
-sudo mkdir -p /opt/pure-line
-sudo chown "$USER":"$USER" /opt/pure-line
-git clone https://github.com/mahmoudshaker123/pure-line.git /opt/pure-line
-cd /opt/pure-line
-```
-
-## 2. إعداد الدومين
-
-في Cloudflare DNS أضف السجلين التاليين إلى IP السيرفر:
-
-- `A` للاسم `@`
-- `A` للاسم `www`
-
-في أول تشغيل يمكن إبقاء Proxy في وضع DNS only. بعد التأكد من أن HTTPS يعمل، فعّل Proxy البرتقالي إن أردت CDN وحماية إضافية، واجعل SSL/TLS في Cloudflare على `Full (strict)`.
-
-## 3. أسرار وإعدادات Production
+عدّل `index.html` أو ملفات `assets/`، ثم:
 
 ```bash
-cd /opt/pure-line
-cp .env.production.example .env.production
-chmod 600 .env.production
-openssl rand -base64 48
-openssl rand -base64 36
-nano .env.production
+git add .
+git commit -m "Update profile content"
+git push origin main
 ```
 
-- ضع الدومين من دون `https://` في `DOMAIN`.
-- استخدم الناتج الأول في `DJANGO_SECRET_KEY` والثاني في `POSTGRES_PASSWORD`.
-- لا ترفع ملف `.env.production` إلى Git.
-- إعدادات SMTP في آخر الملف اختيارية، ويمكن إضافتها لاحقًا.
+Cloudflare Pages سيعيد النشر تلقائيًا بعد كل Push.
 
-## 4. التشغيل لأول مرة
+## ملاحظات مهمة
 
-```bash
-docker compose --env-file .env.production -f docker-compose.prod.yml up -d --build
-docker compose --env-file .env.production -f docker-compose.prod.yml exec web python manage.py seed_site
-docker compose --env-file .env.production -f docker-compose.prod.yml exec web python manage.py createsuperuser
-docker compose --env-file .env.production -f docker-compose.prod.yml ps
-```
-
-شغّل `seed_site` مرة واحدة فقط على قاعدة جديدة؛ إعادة تشغيله لاحقًا قد تعيد بعض المحتوى الافتراضي فوق تعديلات لوحة الإدارة.
-
-افتح بعدها:
-
-- الموقع: `https://YOUR-DOMAIN/`
-- لوحة الإدارة: `https://YOUR-DOMAIN/admin/`
-- فحص الخدمة: `https://YOUR-DOMAIN/health/`
-
-## نقل محتوى النسخة المحلية بدل المحتوى الافتراضي
-
-إذا عدّلت المحتوى محليًا وتريد نفس البيانات على السيرفر، صدّرها قبل الرفع:
-
-```powershell
-.\.venv\Scripts\python.exe manage.py dumpdata website --indent 2 -o site-data.json
-```
-
-انسخ `site-data.json` وأي ملفات داخل `media/` إلى السيرفر، ثم بعد أول تشغيل والمهاجرات:
-
-```bash
-docker compose --env-file .env.production -f docker-compose.prod.yml cp site-data.json web:/tmp/site-data.json
-docker compose --env-file .env.production -f docker-compose.prod.yml exec web python manage.py loaddata /tmp/site-data.json
-docker run --rm -v pureline_media_data:/target -v "$PWD/media:/source:ro" alpine sh -c 'cp -a /source/. /target/'
-```
-
-لا تشغّل `seed_site` في هذه الحالة. أنشئ مستخدم الإدارة على السيرفر باستخدام `createsuperuser` ولا تنقل كلمة مرور الإدارة التجريبية.
-
-## النسخ الاحتياطي
-
-اجعل السكربت قابلًا للتشغيل ثم اختبره:
-
-```bash
-chmod +x scripts/backup.sh
-./scripts/backup.sh
-```
-
-لتشغيل نسخة يومية الساعة 3 صباحًا:
-
-```cron
-0 3 * * * cd /opt/pure-line && ./scripts/backup.sh >> /var/log/pureline-backup.log 2>&1
-```
-
-السكربت يحتفظ بآخر 14 يومًا من قاعدة البيانات والصور المرفوعة. يجب أيضًا نسخ مجلد `backups/` إلى مكان خارج نفس السيرفر أو تفعيل Backups/Snapshots لدى مزود الـ VPS؛ وجود النسخة على نفس السيرفر وحده غير كافٍ.
-
-## التحديثات اللاحقة
-
-```bash
-cd /opt/pure-line
-git pull --ff-only
-docker compose --env-file .env.production -f docker-compose.prod.yml up -d --build
-docker image prune -f
-```
-
-الـ container ينفذ `migrate` و`collectstatic` تلقائيًا قبل تشغيل Gunicorn. راقب السجلات بعد كل تحديث:
-
-```bash
-docker compose --env-file .env.production -f docker-compose.prod.yml logs --tail=150 web caddy
-```
-
-## فحص ما قبل التسليم
-
-- غيّر كلمة مرور الإدارة المحلية ولا تستخدمها على Production.
-- اختبر إرسال نموذج التواصل وظهور الطلب داخل لوحة الإدارة.
-- عدّل الهاتف والبريد والعنوان وروابط التواصل وSEO من إعدادات الشركة في لوحة الإدارة.
-- راجع الموقع على الهاتف والكمبيوتر.
-- تأكد من `https://` ومن تحويل `www` إلى الدومين الرئيسي.
-- اختبر استعادة Backup مرة واحدة، وليس إنشاءه فقط.
-- اربط Google Search Console وGoogle Analytics أو أداة تحليلات تحترم الخصوصية إذا احتجت قياس الزيارات.
+- لا توجد لوحة إدارة في النسخة Static. تعديل النصوص والصور يتم من ملفات المشروع ثم Push.
+- لا توجد قاعدة بيانات أو طلبات محفوظة؛ طلبات التواصل تصل عبر واتساب.
+- لا تضع كلمات سر أو مفاتيح API داخل JavaScript.
+- استضافة Pages مجانية، لكن تجديد الدومين يظل التكلفة السنوية الوحيدة.
