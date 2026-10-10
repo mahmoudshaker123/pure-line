@@ -1,46 +1,148 @@
-
 <!doctype html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0b0e12">
-  <meta name="description" content="من المصاعد والمقاولات إلى السباكة والكهرباء وأنظمة الحريق والتكييف، نقدم إدارة هندسية متكاملة لمشروع أكثر أمانًا وكفاءة.">
+  <meta name="theme-color" content="#080b0f" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#f3f0e7" media="(prefers-color-scheme: light)">
+  <meta name="color-scheme" content="dark light">
+
+  <!-- SEO Core -->
+  <title>مؤسسة الخط النقي للمقاولات والمصاعد | خميس مشيط ومكة المكرمة</title>
+  <meta name="description" content="مؤسسة الخط النقي: خدمات مصاعد ومقاولات وسباكة وكهرباء وحريق وتكييف بالمملكة العربية السعودية. تنفيذ متكامل بإشراف هندسي لمشاريع خميس مشيط ومكة المكرمة. اتصل بنا: 0534201283">
+  <meta name="keywords" content="مصاعد, مقاولات, خميس مشيط, سباكة, كهرباء, تكييف, انظمة حريق, الخط النقي, MEP, تركيب مصاعد, مكة المكرمة, سابقة اعمال, شركة كهرباء, وزارة صحة, بنك البلاد">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="author" content="مؤسسة الخط النقي للمقاولات والمصاعد">
+  <meta name="geo.region" content="SA">
+  <meta name="geo.placename" content="خميس مشيط">
+  <link rel="canonical" href="https://purelineksa.com/">
+
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ar_SA">
   <meta property="og:site_name" content="مؤسسة الخط النقي للمقاولات والمصاعد">
-  <meta property="og:title" content="مؤسسة الخط النقي للمقاولات والمصاعد">
-  <meta property="og:description" content="من المصاعد والمقاولات إلى السباكة والكهرباء وأنظمة الحريق والتكييف، نقدم إدارة هندسية متكاملة لمشروع أكثر أمانًا وكفاءة.">
+  <meta property="og:title" content="مؤسسة الخط النقي للمقاولات والمصاعد | خميس مشيط ومكة">
+  <meta property="og:description" content="خدمات مصاعد ومقاولات وسباكة وكهرباء وحريق وتكييف بإدارة هندسية متكاملة في المملكة العربية السعودية.">
   <meta property="og:url" content="https://purelineksa.com/">
   <meta property="og:image" content="https://purelineksa.com/assets/images/services/hvac.webp">
+  <meta property="og:image:width" content="1280">
+  <meta property="og:image:height" content="800">
+  <meta property="og:image:alt" content="مؤسسة الخط النقي - حلول MEP متكاملة">
+
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="مؤسسة الخط النقي للمقاولات والمصاعد">
-  <meta name="twitter:description" content="من المصاعد والمقاولات إلى السباكة والكهرباء وأنظمة الحريق والتكييف، نقدم إدارة هندسية متكاملة لمشروع أكثر أمانًا وكفاءة.">
-  <title>مؤسسة الخط النقي للمقاولات والمصاعد</title>
-  <link rel="canonical" href="https://purelineksa.com/">
+  <meta name="twitter:description" content="خدمات مصاعد ومقاولات وسباكة وكهرباء وحريق وتكييف بإدارة هندسية متكاملة في السعودية.">
+  <meta name="twitter:image" content="https://purelineksa.com/assets/images/services/hvac.webp">
+
+  <!-- Favicon -->
   <link rel="icon" href="assets/images/brand/logo-v2.webp" type="image/webp">
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Preload critical hero image -->
+  <link rel="preload" as="image" href="assets/images/services/hvac.webp">
+
+  <!-- Stylesheet -->
   <link rel="stylesheet" href="assets/css/site.css">
+
+  <!-- Inline: apply saved theme BEFORE paint to avoid flash -->
+  <script>
+    (function(){
+      var t = localStorage.getItem('pl-theme');
+      if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+
+  <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
+    "@id": "https://purelineksa.com/#business",
     "name": "مؤسسة الخط النقي للمقاولات والمصاعد",
     "alternateName": "Pure Line for Contracting and Elevators Est.",
     "url": "https://purelineksa.com/",
     "logo": "https://purelineksa.com/assets/images/brand/logo-v2.webp",
     "image": "https://purelineksa.com/assets/images/services/hvac.webp",
-    "telephone": "0534201283",
+    "telephone": ["+966534201283", "+966506019745"],
     "email": "info@pureline.sa",
-    "description": "من المصاعد والمقاولات إلى السباكة والكهرباء وأنظمة الحريق والتكييف، نقدم إدارة هندسية متكاملة لمشروع أكثر أمانًا وكفاءة.",
+    "description": "مؤسسة متخصصة في توريد وتركيب وصيانة المصاعد وأعمال المقاولات العامة والسباكة والكهرباء وأنظمة الحريق والتكييف بالمملكة العربية السعودية.",
+    "priceRange": "$$",
+    "openingHours": "Sa-Th 08:00-18:00",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "المملكة العربية السعودية \u002D خميس مشيط ومكة المكرمة",
+      "streetAddress": "خميس مشيط ومكة المكرمة",
+      "addressRegion": "عسير",
       "addressCountry": "SA"
     },
-    "areaServed": "Saudi Arabia"
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "18.3067",
+      "longitude": "42.7305"
+    },
+    "areaServed": [
+      {"@type": "City", "name": "خميس مشيط"},
+      {"@type": "City", "name": "مكة المكرمة"}
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "خدماتنا",
+      "itemListElement": [
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "توريد وتركيب المصاعد"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "المقاولات العامة والتشطيب"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "أنظمة السباكة والصرف الصحي"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "الأعمال الكهربائية"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "أنظمة مكافحة الحريق والإنذار"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "أنظمة التكييف والتهوية"}}
+      ]
+    }
+  }
+  </script>
+
+  <!-- FAQPage Schema for Search Engine Rich Snippets -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "ما هي مجالات عمل مؤسسة الخط النقي للمقاولات والمصاعد؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "نقدم خدمات متكاملة تشمل: توريد وتركيب وصيانة المصاعد، أعمال المقاولات العامة والتشطيب، شبكات السباكة وتغذية المياه والصرف، الأعمال واللوحات الكهربائية، أنظمة مكافحة الحريق والإنذار المبكر، وأنظمة التكييف والتهوية المركزية (MEP)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ما هي مناطق تقديم الخدمة لمؤسسة الخط النقي؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "تخدم مؤسسة الخط النقي بشكل رئيسي مدينتي خميس مشيط ومكة المكرمة ومنطقة عسير، مع تنفيذ مشاريع متخصصة في مختلف مناطق المملكة العربية السعودية."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "هل توفرون عقود صيانة معتمدة للمصاعد وأنظمة الحريق؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "نعم، نقدم عقود صيانة دورية سنوية وشبه سنوية للمصاعد وأنظمة مكافحة الحريق معتمدة ومطابقة لمتطلبات كود البناء السعودي والدفاع المدني، مع فرق طوارئ واستجابة سريعة."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "كيف يمكنني طلب معاينة هندسية أو عرض سعر للمشروع؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "يمكنك التواصل المباشر عبر الاتصال أو الواتساب على الرقم 0534201283، أو تعبئة نموذج الطلب في الموقع الإلكتروني وسيقوم مهندس مختص بالتواصل وتحديد موعد المعاينة."
+        }
+      }
+    ]
   }
   </script>
 </head>
@@ -63,15 +165,23 @@
         <img src="assets/images/brand/logo-v2.webp" alt="شعار مؤسسة الخط النقي للمقاولات والمصاعد" width="512" height="512" decoding="async">
         <span><b>الخط النقي</b><small>PURE LINE EST.</small></span>
       </a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-menu" aria-label="فتح القائمة">
-        <span></span><span></span><span></span>
-      </button>
       <div class="nav-menu" id="main-menu">
         <a href="#about">من نحن</a>
         <a href="#services">خدماتنا</a>
-        <a href="#projects">مشروعاتنا</a>
+        <a href="#projects">أعمالنا</a>
+        <a href="#portfolio">سابقة الأعمال</a>
         <a href="#process">كيف نعمل</a>
+        <a href="#faq">الأسئلة الشائعة</a>
         <a class="nav-cta" href="#contact">اطلب معاينة <span>←</span></a>
+      </div>
+      <div class="nav-actions">
+        <button class="theme-toggle" type="button" aria-label="تبديل إلى الوضع النهاري" id="theme-toggle" title="الوضع النهاري">
+          <span class="icon-sun" aria-hidden="true">☀️</span>
+          <span class="icon-moon" aria-hidden="true">🌙</span>
+        </button>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-menu" aria-label="فتح القائمة">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </nav>
   </header>
@@ -267,7 +377,7 @@
       <div class="shell">
         <div class="section-title-row section-title-row--light reveal">
           <div><div class="eyebrow"><span></span> نماذج من أعمالنا</div><h2>تفاصيل تتحدث<br><em>عن جودة التنفيذ</em></h2></div>
-          <p>صور من مجالات أعمالنا ومشروعاتنا، وتستطيع تحديثها بالكامل من لوحة الإدارة.</p>
+          <p>صور حقيقية من مشروعاتنا المنفذة في مجالات الحريق والمصاعد والكهرباء والتكييف.</p>
         </div>
         <div class="projects-grid">
           
@@ -284,7 +394,7 @@
             </div>
           </article>
           
-          <article class="project-card reveal ">
+          <article class="project-card reveal">
             <div class="project-card__media">
               <img src="assets/images/projects/elevator-01.jpeg" alt="تشطيب واجهة مصعد فاخرة" loading="lazy" decoding="async">
               <div class="project-card__shade"></div>
@@ -297,7 +407,7 @@
             </div>
           </article>
           
-          <article class="project-card reveal ">
+          <article class="project-card reveal">
             <div class="project-card__media">
               <img src="assets/images/services/electrical.webp" alt="منظومة لوحات وقوى كهربائية" loading="lazy" decoding="async">
               <div class="project-card__shade"></div>
@@ -327,6 +437,74 @@
       </div>
     </section>
 
+    <!-- ===== PORTFOLIO: PAST PROJECTS ===== -->
+    <section class="section portfolio" id="portfolio">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div class="eyebrow"><span></span> سابقة الأعمال</div>
+          <h2>مشاريعنا السابقة<br><em>عملاء نفتخر بثقتهم</em></h2>
+          <p class="portfolio-lead">نفذنا مشاريع متنوعة لعملاء من القطاعين الحكومي والخاص في المملكة العربية السعودية.</p>
+        </div>
+        <div class="portfolio-grid">
+
+          <div class="portfolio-item reveal">
+            <div class="portfolio-item__icon">🏛️</div>
+            <div class="portfolio-item__body">
+              <h3>شركة الكهرباء السعودية</h3>
+              <p>مشروع تنفيذ وتركيب أنظمة كهربائية متكاملة</p>
+              <span class="portfolio-item__tag">الأعمال الكهربائية</span>
+            </div>
+          </div>
+
+          <div class="portfolio-item reveal">
+            <div class="portfolio-item__icon">🏥</div>
+            <div class="portfolio-item__body">
+              <h3>وزارة الصحة</h3>
+              <p>مشروع تنفيذ وتركيب أنظمة الحريق والإنذار المبكر</p>
+              <span class="portfolio-item__tag">الحريق والإنذار</span>
+            </div>
+          </div>
+
+          <div class="portfolio-item reveal">
+            <div class="portfolio-item__icon">🏦</div>
+            <div class="portfolio-item__body">
+              <h3>بنك البلاد</h3>
+              <p>مشروع تنفيذ وتركيب منظومة التكييف والتهوية المركزية</p>
+              <span class="portfolio-item__tag">التكييف والتهوية</span>
+            </div>
+          </div>
+
+          <div class="portfolio-item reveal">
+            <div class="portfolio-item__icon">🎓</div>
+            <div class="portfolio-item__body">
+              <h3>جامعة الملك خالد</h3>
+              <p>مشروع تنفيذ وتركيب شبكات السباكة والصرف الصحي</p>
+              <span class="portfolio-item__tag">السباكة والصرف</span>
+            </div>
+          </div>
+
+          <div class="portfolio-item reveal">
+            <div class="portfolio-item__icon">🏢</div>
+            <div class="portfolio-item__body">
+              <h3>شركة دانة العقارية</h3>
+              <p>مشروع تنفيذ وتركيب مصاعد وأنظمة رفع متكاملة</p>
+              <span class="portfolio-item__tag">المصاعد</span>
+            </div>
+          </div>
+
+          <div class="portfolio-item reveal">
+            <div class="portfolio-item__icon">💊</div>
+            <div class="portfolio-item__body">
+              <h3>صيدليات النهدي</h3>
+              <p>مشروع تنفيذ وتركيب أنظمة التكييف والأعمال الكهربائية</p>
+              <span class="portfolio-item__tag">أعمال متكاملة</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
     <section class="stats">
       <div class="shell stats__grid reveal">
         <div><strong data-count="6">0</strong><span>قطاعات هندسية متكاملة</span></div><div><strong data-count="100">0</strong><b>%</b><span>التزام بمعايير السلامة</span></div><div><strong data-count="2">0</strong><span>مدن ضمن نطاق خدمتنا</span></div><div><strong data-count="1">0</strong><span>فريق واحد لإدارة مشروعك</span></div>
@@ -348,7 +526,68 @@
         </div>
       </div>
     </section>
-    
+
+    <!-- ===== FAQ: FREQUENTLY ASKED QUESTIONS ===== -->
+    <section class="section faq-section" id="faq">
+      <div class="shell">
+        <div class="section-head reveal" style="text-align: center; margin-inline: auto;">
+          <div class="eyebrow eyebrow--dark" style="justify-content: center;"><span></span> إجابات شافية</div>
+          <h2>الأسئلة الأكثر شيوعاً<br><em>حول خدماتنا ومشاريعنا</em></h2>
+          <p class="portfolio-lead" style="margin-inline: auto;">جمعنا لك أهم الاستفسارات حول آلية العمل، التراخيص، الضمانات، ونطاق الخدمة.</p>
+        </div>
+        <div class="faq-grid reveal">
+          <div class="faq-item">
+            <button class="faq-item__header" type="button" aria-expanded="false">
+              <span>ما هي مجالات وتخصصات مؤسسة الخط النقي؟</span>
+              <span class="faq-item__icon" aria-hidden="true">↓</span>
+            </button>
+            <div class="faq-item__body">
+              <p>نقدم حزمة متكاملة تشمل: توريد وتركيب وصيانة المصاعد، المقاولات العامة والتشطيب، تمديدات وشبكات السباكة والصرف، الأعمال واللوحات الكهربائية، أنظمة مكافحة الحريق والإنذار المعتمدة، وشبكات التكييف والتهوية المركزية (MEP).</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-item__header" type="button" aria-expanded="false">
+              <span>ما هي المناطق والمدن التي تغطيها خدماتكم؟</span>
+              <span class="faq-item__icon" aria-hidden="true">↓</span>
+            </button>
+            <div class="faq-item__body">
+              <p>نعمل بشكل أساسي في منطقة عسير (خميس مشيط، أبها وما حولهما) ومنطقة مكة المكرمة، كما ننفذ مشاريع المقاولات الكبرى والتجهيزات الكهروميكانيكية المتخصصة في مختلف مدن المملكة العربية السعودية.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-item__header" type="button" aria-expanded="false">
+              <span>هل تقدمون عقود صيانة دورية للمصاعد وأنظمة الحريق؟</span>
+              <span class="faq-item__icon" aria-hidden="true">↓</span>
+            </button>
+            <div class="faq-item__body">
+              <p>نعم، نوفر عقود صيانة وقائية دورية معتمدة (شهرية وسنوية) تضمن أعلى معايير السلامة واستمرارية التشغيل، مع توفير قطع غيار أصلية وفريق طوارئ متأهب على مدار الساعة.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-item__header" type="button" aria-expanded="false">
+              <span>هل الأعمال معتمدة ومطابقة لكود البناء السعودي والدفاع المدني؟</span>
+              <span class="faq-item__icon" aria-hidden="true">↓</span>
+            </button>
+            <div class="faq-item__body">
+              <p>بالتأكيد، كافة المخططات والتنفيذ والاختبارات تتم وفق كود البناء السعودي (SBC) واشتراطات الدفاع المدني والجهات المعنية، ونسلم تقارير فحص واختبار هندسية معتمدة لكل مرحلة.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-item__header" type="button" aria-expanded="false">
+              <span>كيف يمكنني طلب معاينة الموقع أو استلام عرض سعر؟</span>
+              <span class="faq-item__icon" aria-hidden="true">↓</span>
+            </button>
+            <div class="faq-item__body">
+              <p>يمكنك التواصل مباشرة على 0534201283 أو إرسال تفاصيل مشروعك عبر نموذج الاتصال السريع، وسيقوم مهندس مختص بالتواصل معك فوراً لتحديد موعد المعاينة ودراسة المخططات.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <section class="section contact" id="contact">
       <div class="shell contact__grid">
@@ -361,30 +600,21 @@
             <a href="mailto:info@pureline.sa"><small>راسلنا</small><b>info@pureline.sa</b></a>
             <div><small>نطاق الخدمة</small><b>المملكة العربية السعودية - خميس مشيط ومكة المكرمة</b></div>
             <div><small>ساعات العمل</small><b>السبت - الخميس: 8 صباحًا حتى 6 مساءً</b></div>
-            
           </div>
         </div>
         <div class="contact__form-wrap reveal">
-          
           <form class="contact-form" id="contact-form">
             <div class="form-honeypot" aria-hidden="true"></div>
             <div class="form-row"><div class="field"><label for="id_name">الاسم *</label><input type="text" name="name" placeholder="الاسم الكريم" autocomplete="name" maxlength="100" class="form-control" required id="id_name"></div><div class="field"><label for="id_phone">رقم الجوال *</label><input type="text" name="phone" placeholder="05xxxxxxxx" inputmode="tel" autocomplete="tel" maxlength="20" class="form-control" required id="id_phone"></div></div>
             <div class="form-row"><div class="field"><label for="id_email">البريد الإلكتروني</label><input type="email" name="email" placeholder="البريد الإلكتروني - اختياري" autocomplete="email" maxlength="254" class="form-control" id="id_email"></div><div class="field"><label for="id_location">موقع المشروع</label><input type="text" name="location" placeholder="المدينة أو موقع المشروع" maxlength="120" class="form-control" id="id_location"></div></div>
             <div class="field"><label for="id_service">الخدمة المطلوبة</label><select name="service" aria-label="اختر الخدمة" class="form-control" id="id_service">
   <option value="" selected>اختر الخدمة المطلوبة</option>
-
-  <option value="1">المصاعد</option>
-
-  <option value="2">المقاولات العامة</option>
-
-  <option value="3">السباكة والصرف</option>
-
-  <option value="4">الأعمال الكهربائية</option>
-
-  <option value="5">الحريق والإنذار</option>
-
-  <option value="6">التكييف والتهوية</option>
-
+  <option value="توريد وتركيب المصاعد">توريد وتركيب المصاعد</option>
+  <option value="المقاولات العامة والتشطيب">المقاولات العامة والتشطيب</option>
+  <option value="السباكة والصرف الصحي">السباكة والصرف الصحي</option>
+  <option value="الأعمال الكهربائية">الأعمال الكهربائية</option>
+  <option value="أنظمة الحريق والإنذار">أنظمة الحريق والإنذار</option>
+  <option value="أنظمة التكييف والتهوية">أنظمة التكييف والتهوية</option>
 </select></div>
             <div class="field"><label for="id_message">تفاصيل المشروع *</label><textarea name="message" cols="40" rows="5" placeholder="حدثنا باختصار عن احتياج المشروع" class="form-control" required id="id_message">
 </textarea></div>
@@ -400,7 +630,7 @@
     <div class="shell footer__top">
       <a class="brand brand--footer" href="#top"><img src="assets/images/brand/logo-v2.webp" alt="" width="512" height="512" loading="lazy" decoding="async"><span><b>الخط النقي</b><small>PURE LINE EST.</small></span></a>
       <p>حلول المقاولات والمصاعد والأعمال الكهروميكانيكية بمعيار واحد من الجودة.</p>
-      <div class="footer__links"><a href="#about">من نحن</a><a href="#services">الخدمات</a><a href="#projects">المشروعات</a><a href="#contact">دخول الإدارة</a></div>
+      <div class="footer__links"><a href="#about">من نحن</a><a href="#services">الخدمات</a><a href="#projects">أعمالنا</a><a href="#portfolio">سابقة الأعمال</a><a href="#faq">الأسئلة الشائعة</a><a href="#contact">تواصل معنا</a></div>
       
     </div>
     <div class="shell footer__bottom"><span>© 2026 مؤسسة الخط النقي للمقاولات والمصاعد. جميع الحقوق محفوظة.</span><span>س.ت 4031303184</span></div>

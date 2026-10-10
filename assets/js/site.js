@@ -1,3 +1,25 @@
+/* ================================================================
+   مؤسسة الخط النقي للمقاولات والمصاعد | JavaScript
+   ================================================================ */
+
+// Theme toggle (Dark / Light mode)
+const themeToggle = document.getElementById('theme-toggle');
+const applyTheme = (theme) => {
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('pl-theme', theme);
+  if (themeToggle) {
+    themeToggle.setAttribute('aria-label', theme === 'dark' ? 'تبديل إلى الوضع النهاري' : 'تبديل إلى الوضع الليلي');
+    themeToggle.setAttribute('title', theme === 'dark' ? 'الوضع النهاري' : 'الوضع الليلي');
+  }
+};
+
+themeToggle?.addEventListener('click', () => {
+  const current = document.documentElement.getAttribute('data-theme') || 'dark';
+  const target = current === 'dark' ? 'light' : 'dark';
+  applyTheme(target);
+});
+
+// Mobile navigation
 const toggle = document.querySelector('.nav-toggle');
 const menu = document.querySelector('.nav-menu');
 const header = document.querySelector('.site-header');
@@ -16,13 +38,16 @@ menu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () 
   document.body.classList.remove('menu-open');
 }));
 
+// Header & back-to-top on scroll
 window.addEventListener('scroll', () => {
-  header?.classList.toggle('is-scrolled', window.scrollY > 24);
+  const scrolled = window.scrollY > 24;
+  header?.classList.toggle('is-scrolled', scrolled);
   backTop?.classList.toggle('is-visible', window.scrollY > 600);
 }, { passive: true });
 
 backTop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
+// Reveal on scroll
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
@@ -34,13 +59,14 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
 
+// Counters animation
 const counterObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (!entry.isIntersecting) return;
     const element = entry.target;
     const target = Number(element.dataset.count || 0);
     const started = performance.now();
-    const duration = 1100;
+    const duration = 1200;
     const draw = (now) => {
       const progress = Math.min((now - started) / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
@@ -50,10 +76,30 @@ const counterObserver = new IntersectionObserver((entries) => {
     requestAnimationFrame(draw);
     counterObserver.unobserve(element);
   });
-}, { threshold: 0.7 });
+}, { threshold: 0.6 });
 
 document.querySelectorAll('[data-count]').forEach((element) => counterObserver.observe(element));
 
+// FAQ Accordion
+document.querySelectorAll('.faq-item__header').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('is-open');
+
+    // Close all other FAQs
+    document.querySelectorAll('.faq-item.is-open').forEach((other) => {
+      if (other !== item) {
+        other.classList.remove('is-open');
+        other.querySelector('.faq-item__header')?.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    item.classList.toggle('is-open', !isOpen);
+    btn.setAttribute('aria-expanded', String(!isOpen));
+  });
+});
+
+// Contact Form -> WhatsApp
 const contactForm = document.querySelector('#contact-form');
 contactForm?.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -62,7 +108,8 @@ contactForm?.addEventListener('submit', (event) => {
   const phone = value('id_phone');
   const email = value('id_email');
   const location = value('id_location');
-  const service = value('id_service');
+  const serviceSelect = document.getElementById('id_service');
+  const service = serviceSelect ? (serviceSelect.options[serviceSelect.selectedIndex]?.text || serviceSelect.value) : '';
   const message = value('id_message');
 
   if (!name || !phone || !message) {
@@ -71,9 +118,17 @@ contactForm?.addEventListener('submit', (event) => {
   }
 
   const text = encodeURIComponent(
-    `طلب جديد من الموقع\nالاسم: ${name}\nالجوال: ${phone}\nالبريد: ${email || '-'}\n` +
-    `الخدمة: ${service || '-'}\nالموقع: ${location || '-'}\nالتفاصيل: ${message}`
+    `السلام عليكم ورحمة الله وبركاته\n` +
+    `طلب استشارة / معاينة من موقع مؤسسة الخط النقي:\n\n` +
+    `👤 الاسم: ${name}\n` +
+    `📱 رقم الجوال: ${phone}\n` +
+    `🏢 الخدمة المطلوبة: ${service && service !== 'اختر الخدمة المطلوبة' ? service : 'غير محدد'}\n` +
+    `📍 موقع المشروع: ${location || 'غير محدد'}\n` +
+    (email ? `✉️ البريد الإلكتروني: ${email}\n` : '') +
+    `📝 تفاصيل الاحتياج:\n${message}\n\n` +
+    `شكراً جزيلاً.`
   );
+
   window.open(`https://wa.me/966534201283?text=${text}`, '_blank', 'noopener');
   contactForm.reset();
 });
