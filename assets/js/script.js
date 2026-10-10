@@ -82,7 +82,7 @@ if (form) {
     );
 
     formMessage.textContent = 'تم تجهيز الطلب، وسيتم تحويلك إلى واتساب.';
-    window.open(`https://wa.me/966534201283?text=${whatsappText}`, '_blank', 'noopener');
+    window.open(`https://wa.me/966506019745?text=${whatsappText}`, '_blank', 'noopener');
     form.reset();
   });
 }

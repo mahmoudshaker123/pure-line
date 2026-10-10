@@ -129,6 +129,6 @@ contactForm?.addEventListener('submit', (event) => {
     `شكراً جزيلاً.`
   );
 
-  window.open(`https://wa.me/966534201283?text=${text}`, '_blank', 'noopener');
+  window.open(`https://wa.me/966506019745?text=${text}`, '_blank', 'noopener');
   contactForm.reset();
 });
